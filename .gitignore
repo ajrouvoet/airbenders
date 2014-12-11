@@ -1,0 +1,4 @@
+.sass-cache/
+**/app/lib/
+node_modules/
+target/
