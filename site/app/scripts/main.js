@@ -1,6 +1,5 @@
 angular.module('airbender', [
     'airbender.models',
-    'airbender.controllers',
     'airbender.directives'
   ])
   .run(['userResource', function(Users) {
