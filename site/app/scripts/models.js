@@ -1,11 +1,11 @@
 /// <reference path="../_libs.ts" />
 
-angular.module("airbender.models", ["ngResource"])
+angular.module("airbender.models", ["ngResource", "airbender.config"])
 
   // users
-  .factory("userResource", ["$resource", function ($resource) {
+  .factory("userResource", ["api", "$resource", function (api, $resource) {
     return $resource(
-      'api/1.0/users/:id/',
+      api + '/users/:id/',
       {
         id: "@id"
       }
@@ -13,9 +13,9 @@ angular.module("airbender.models", ["ngResource"])
   }])
 
   // reservations
-  .factory("reservsResource", ["$resource", function ($resource) {
+  .factory("reservsResource", ["api", "$resource", function (api, $resource) {
     return $resource(
-      'api/1.0/reservs/:id/',
+      api + '/reservs/:id/',
       {
         id: "@id"
       }
