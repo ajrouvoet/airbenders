@@ -13,6 +13,7 @@
     "grunt-contrib-jade": "",
     "grunt-contrib-copy": "",
     "grunt-contrib-clean": "",
+    "grunt-contrib-uglify": "",
     "grunt-ng-constant": "",
     "grunt-notify": ""
   },

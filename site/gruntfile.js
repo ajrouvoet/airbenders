@@ -8,11 +8,9 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: [
-          'app/scripts/**/*.ts',
-          '!**/[mM]ain.d.ts', // generated
-          '!app/lib/**/*'
+          'app/scripts/**/*.js'
         ],
-        tasks: ['typescript']
+        tasks: ['uglify']
       },
 
       styles: {
@@ -51,7 +49,7 @@ module.exports = function(grunt) {
       }
     },
 
-    clean: [ 'target' ],
+    clean: [ 'dist' ],
 
     copy: {
       resources: {
@@ -61,7 +59,7 @@ module.exports = function(grunt) {
             flatten: true,
             src: ['resources/**/*', 'views/**/*.html'],
             cwd: 'app/',
-            dest: 'target/'
+            dest: 'dist/'
           }
         ]
       },
@@ -72,7 +70,7 @@ module.exports = function(grunt) {
             expand: true,
             src: ['lib/**/*'],
             cwd: 'app/',
-            dest: 'target/'
+            dest: 'dist/'
           }
         ]
       }
@@ -84,7 +82,7 @@ module.exports = function(grunt) {
           port: 8080,
           hostname: '*',
           keepalive: true,
-          base: "target/"
+          base: "dist/"
         }
       }
     },
@@ -99,7 +97,7 @@ module.exports = function(grunt) {
           fontsDir: 'app/resources/fonts',
           httpFontsDir: 'resources/fonts',
           sassDir: 'app/style/',
-          cssDir: 'target/style/css'
+          cssDir: 'dist/style/css'
         }
       }
     },
@@ -107,10 +105,10 @@ module.exports = function(grunt) {
     typescript: {
       main: {
         src: ['app/scripts/main.ts'],
-        dest: 'target/scripts/main.js',
+        dest: 'dist/scripts/main.js',
         options: {
           module: 'amd', //or commonjs
-          target: 'es5', //or es3
+          dist: 'es5', //or es3
           basePath: 'app/scripts/',
           sourceMap: true,
           declaration: true
@@ -119,10 +117,10 @@ module.exports = function(grunt) {
 
       admin: {
         src: ['app/scripts/admin/main.ts'],
-        dest: 'target/scripts/admin/main.js',
+        dest: 'dist/scripts/admin/main.js',
         options: {
           module: 'amd', //or commonjs
-          target: 'es5', //or es3
+          dist: 'es5', //or es3
           basePath: 'app/scripts/',
           sourceMap: true,
           declaration: true
@@ -141,7 +139,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             src: "**/*.jade",
-            dest: "target/",
+            dest: "dist/",
             cwd: "app/",
             ext: '.html'
           }
@@ -149,10 +147,18 @@ module.exports = function(grunt) {
       }
     },
 
+    uglify: {
+      dist: {
+        files: {
+          'dist/scripts/main.min.js': ['app/scripts/**/*.js']
+        }
+      }
+    },
+
     ngconstant: {
       options: {
         name: 'nwb.config',
-        dest: 'target/scripts/config.js',
+        dest: 'dist/scripts/config.js',
         constants: {
           apiUrl: "http://localhost\\:8000/api/",
           debug: false
@@ -173,15 +179,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-ng-constant');
   grunt.loadNpmTasks('grunt-notify');
   grunt.loadNpmTasks('grunt-typescript');
 
   // Default task(s).
   grunt.registerTask('default', [
-    'ngconstant:dev',
     'compass:dist',
-    'typescript',
+    'uglify',
     'jade',
     'copy',
     'connect'
