@@ -46,7 +46,7 @@ module.exports = function(grunt) {
       },
 
       resources: {
-        files: [ 'app/resources/' ],
+        files: [ 'app/resources/'],
         tasks: [ 'copy:resources' ]
       }
     },
@@ -58,7 +58,8 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            src: ['resources/**/*'],
+            flatten: true,
+            src: ['resources/**/*', 'views/**/*.html'],
             cwd: 'app/',
             dest: 'target/'
           }
@@ -182,7 +183,8 @@ module.exports = function(grunt) {
     'compass:dist',
     'typescript',
     'jade',
-    'copy'
+    'copy',
+    'connect'
   ]);
 
   // nop task
