@@ -3,12 +3,16 @@ html
   head
     include libs.jade
     script(src="/scripts/main.min.js")
+    link(href="/style/css/main.css" rel="stylesheet")
 
   body
 
     .container
 
-      h1
-        | Airbender
-      h2
-        | Your choice of Walmart San Bruno Office room reservation
+      .row
+        h1
+          | Airbender
+        h2
+          | Your choice of Walmart San Bruno Office room reservation
+
+      div(room-picker)

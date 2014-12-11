@@ -1,4 +1,8 @@
-angular.module('airbender', ['airbender.models'])
+angular.module('airbender', [
+    'airbender.models',
+    'airbender.controllers',
+    'airbender.directives'
+  ])
   .run(['userResource', function(Users) {
     console.log('Airbender is up!');
 
