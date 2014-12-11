@@ -1,0 +1,469 @@
+[
+{
+    "pk": 1,
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry",
+        "name": "log entry"
+    }
+},
+{
+    "pk": 2,
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "permission",
+        "name": "permission"
+    }
+},
+{
+    "pk": 3,
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "group",
+        "name": "group"
+    }
+},
+{
+    "pk": 4,
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "user",
+        "name": "user"
+    }
+},
+{
+    "pk": 5,
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype",
+        "name": "content type"
+    }
+},
+{
+    "pk": 6,
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "sessions",
+        "model": "session",
+        "name": "session"
+    }
+},
+{
+    "pk": 7,
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "core",
+        "model": "resource",
+        "name": "resource"
+    }
+},
+{
+    "pk": 8,
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "core",
+        "model": "room",
+        "name": "room"
+    }
+},
+{
+    "pk": 9,
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "core",
+        "model": "reservation",
+        "name": "reservation"
+    }
+},
+{
+    "pk": "4zosqd1goqukzmd1895lxpsjbzcu0pyq",
+    "model": "sessions.session",
+    "fields": {
+        "expire_date": "2014-12-25T22:33:06.371Z",
+        "session_data": "MGVlYjgxYjEyMzYzZjg2NjE0OGJkNjA2ZjA0ZGZiMGI5NGE0NjVmODp7Il9hdXRoX3VzZXJfaWQiOjEsIl9hdXRoX3VzZXJfaGFzaCI6IjgwMWQwNTc5MDI0NDFlOTc3YjBhZjRjZTkwOWY5OWE5NjRmYTI4YzgiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCJ9"
+    }
+},
+{
+    "pk": 1,
+    "model": "core.resource",
+    "fields": {
+        "name": "Nautilus"
+    }
+},
+{
+    "pk": 2,
+    "model": "core.resource",
+    "fields": {
+        "name": "Miley Cyrus"
+    }
+},
+{
+    "pk": 1,
+    "model": "core.room",
+    "fields": {
+        "number": "5.27",
+        "description": "Where it all started...",
+        "capacity": 18
+    }
+},
+{
+    "pk": 2,
+    "model": "core.room",
+    "fields": {
+        "number": "4.10",
+        "description": "I don't like it either",
+        "capacity": 10
+    }
+},
+{
+    "pk": 1,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 1,
+        "codename": "add_logentry",
+        "name": "Can add log entry"
+    }
+},
+{
+    "pk": 2,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 1,
+        "codename": "change_logentry",
+        "name": "Can change log entry"
+    }
+},
+{
+    "pk": 3,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 1,
+        "codename": "delete_logentry",
+        "name": "Can delete log entry"
+    }
+},
+{
+    "pk": 4,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 2,
+        "codename": "add_permission",
+        "name": "Can add permission"
+    }
+},
+{
+    "pk": 5,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 2,
+        "codename": "change_permission",
+        "name": "Can change permission"
+    }
+},
+{
+    "pk": 6,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 2,
+        "codename": "delete_permission",
+        "name": "Can delete permission"
+    }
+},
+{
+    "pk": 7,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 3,
+        "codename": "add_group",
+        "name": "Can add group"
+    }
+},
+{
+    "pk": 8,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 3,
+        "codename": "change_group",
+        "name": "Can change group"
+    }
+},
+{
+    "pk": 9,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 3,
+        "codename": "delete_group",
+        "name": "Can delete group"
+    }
+},
+{
+    "pk": 10,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 4,
+        "codename": "add_user",
+        "name": "Can add user"
+    }
+},
+{
+    "pk": 11,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 4,
+        "codename": "change_user",
+        "name": "Can change user"
+    }
+},
+{
+    "pk": 12,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 4,
+        "codename": "delete_user",
+        "name": "Can delete user"
+    }
+},
+{
+    "pk": 13,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 5,
+        "codename": "add_contenttype",
+        "name": "Can add content type"
+    }
+},
+{
+    "pk": 14,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 5,
+        "codename": "change_contenttype",
+        "name": "Can change content type"
+    }
+},
+{
+    "pk": 15,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 5,
+        "codename": "delete_contenttype",
+        "name": "Can delete content type"
+    }
+},
+{
+    "pk": 16,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 6,
+        "codename": "add_session",
+        "name": "Can add session"
+    }
+},
+{
+    "pk": 17,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 6,
+        "codename": "change_session",
+        "name": "Can change session"
+    }
+},
+{
+    "pk": 18,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 6,
+        "codename": "delete_session",
+        "name": "Can delete session"
+    }
+},
+{
+    "pk": 19,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 7,
+        "codename": "add_resource",
+        "name": "Can add resource"
+    }
+},
+{
+    "pk": 20,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 7,
+        "codename": "change_resource",
+        "name": "Can change resource"
+    }
+},
+{
+    "pk": 21,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 7,
+        "codename": "delete_resource",
+        "name": "Can delete resource"
+    }
+},
+{
+    "pk": 22,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 8,
+        "codename": "add_room",
+        "name": "Can add room"
+    }
+},
+{
+    "pk": 23,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 8,
+        "codename": "change_room",
+        "name": "Can change room"
+    }
+},
+{
+    "pk": 24,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 8,
+        "codename": "delete_room",
+        "name": "Can delete room"
+    }
+},
+{
+    "pk": 25,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 9,
+        "codename": "add_reservation",
+        "name": "Can add reservation"
+    }
+},
+{
+    "pk": 26,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 9,
+        "codename": "change_reservation",
+        "name": "Can change reservation"
+    }
+},
+{
+    "pk": 27,
+    "model": "auth.permission",
+    "fields": {
+        "content_type": 9,
+        "codename": "delete_reservation",
+        "name": "Can delete reservation"
+    }
+},
+{
+    "pk": 1,
+    "model": "auth.user",
+    "fields": {
+        "username": "arjen",
+        "password": "pbkdf2_sha256$12000$c20XTRICReJJ$HRqTSoM+R/h7KHGpOUJvd8koAhLy0WUBfSCsBKipWXM=",
+        "first_name": "",
+        "groups": [],
+        "email": "a.j.rouvoet@gmail.com",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "last_login": "2014-12-11T22:33:06.329Z",
+        "user_permissions": [],
+        "is_staff": true,
+        "date_joined": "2014-12-11T22:32:32.396Z"
+    }
+},
+{
+    "pk": 2,
+    "model": "auth.user",
+    "fields": {
+        "username": "amit",
+        "password": "pbkdf2_sha256$12000$vlcjzzW3NlHl$UnPAOCBj0qVvAKspbF38gvnv2KYuF7xWKCEIIi2eRFA=",
+        "first_name": "",
+        "groups": [],
+        "email": "amit@amit.com",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "last_login": "2014-12-11T22:32:47.933Z",
+        "user_permissions": [],
+        "is_staff": true,
+        "date_joined": "2014-12-11T22:32:47.933Z"
+    }
+},
+{
+    "pk": 3,
+    "model": "auth.user",
+    "fields": {
+        "username": "glenn",
+        "password": "pbkdf2_sha256$12000$SLzE3mnCQGsr$Hw6HSPwFLigkMtyO1iZPBXdNBixp8Srh1EVSyJ43GRI=",
+        "first_name": "",
+        "groups": [],
+        "email": "glenn@glenn.com",
+        "last_name": "",
+        "is_active": true,
+        "is_superuser": true,
+        "last_login": "2014-12-11T22:32:57.628Z",
+        "user_permissions": [],
+        "is_staff": true,
+        "date_joined": "2014-12-11T22:32:57.628Z"
+    }
+},
+{
+    "pk": 1,
+    "model": "core.reservation",
+    "fields": {
+        "who": 1,
+        "when_from": "2014-12-11T22:35:45Z",
+        "what": 1,
+        "when_to": "2014-12-12T22:35:52Z"
+    }
+},
+{
+    "pk": 1,
+    "model": "admin.logentry",
+    "fields": {
+        "action_time": "2014-12-11T22:35:16.186Z",
+        "user": 1,
+        "change_message": "",
+        "object_id": "1",
+        "object_repr": "Room object",
+        "content_type": 8,
+        "action_flag": 1
+    }
+},
+{
+    "pk": 2,
+    "model": "admin.logentry",
+    "fields": {
+        "action_time": "2014-12-11T22:35:35.209Z",
+        "user": 1,
+        "change_message": "",
+        "object_id": "2",
+        "object_repr": "Room object",
+        "content_type": 8,
+        "action_flag": 1
+    }
+},
+{
+    "pk": 3,
+    "model": "admin.logentry",
+    "fields": {
+        "action_time": "2014-12-11T22:35:56.969Z",
+        "user": 1,
+        "change_message": "",
+        "object_id": "1",
+        "object_repr": "Reservation object",
+        "content_type": 9,
+        "action_flag": 1
+    }
+}
+]
