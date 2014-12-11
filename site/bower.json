@@ -16,10 +16,10 @@
     "font-awesome": "4.2.0",
     "bootstrap": "~3.2.0",
     "moment": "",
-    "angular-moment": "",
+    "angular-moment": ""
   },
   "directory": "app/lib/",
   "resolutions": {
-    "angular": "1.3.0"
+    "angular": "1.3.6"
   }
 }

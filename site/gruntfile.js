@@ -92,7 +92,7 @@ module.exports = function(grunt) {
       dist: {
         options: {
           importPath: [
-            'app/style/bootstrap/',
+            'app/lib/bootstrap/',
             'app/lib/font-awesome/scss/'
           ],
           fontsDir: 'app/resources/fonts',
