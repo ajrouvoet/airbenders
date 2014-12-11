@@ -1,0 +1,6 @@
+Django==1.7
+djangorestframework
+djangorestframework-jwt
+django-cors-headers
+django-livefield
+PyYAML
