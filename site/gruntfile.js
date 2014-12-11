@@ -33,10 +33,9 @@ module.exports = function(grunt) {
 
       reload: {
         files: [
-          'app/views/**/*.html',
-          'app/WEB-INF/**/*.jade',
-          'app/style/css/**/*.css',
-          'app/scripts/**/*.js'
+          'dist/**/*.html',
+          'dist/**/*.css',
+          'dist/**/*.js',
         ],
         options: {
           livereload: true
@@ -82,7 +81,8 @@ module.exports = function(grunt) {
           port: 8080,
           hostname: '*',
           keepalive: true,
-          base: "dist/"
+          base: "dist/",
+          livereload: true
         }
       }
     },
