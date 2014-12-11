@@ -1,0 +1,22 @@
+{
+  "name": "airbender-webclient",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "~1.3.8",
+    "typescript": "~1.0.1",
+    "grunt": "~0.4.0",
+    "grunt-typescript": "",
+    "grunt-contrib-watch": "",
+    "grunt-contrib-compass": "0.9.1",
+    "grunt-contrib-connect": "",
+    "grunt-contrib-jade": "",
+    "grunt-contrib-copy": "",
+    "grunt-contrib-clean": "",
+    "grunt-ng-constant": "",
+    "grunt-notify": ""
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

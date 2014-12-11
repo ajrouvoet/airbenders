@@ -1,0 +1,25 @@
+{
+  "name": "airbenders-webclient",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.2.0",
+    "angular-resource": "~1.2.0",
+    "angular-route": "~1.2.1",
+    "angular-ui-router": "",
+    "angular-sanitize": "",
+    "angular-loading-bar": "",
+    "angular-django-rest-resource": "",
+    "angular-jwt": "",
+    "jquery": "~2.0",
+    "json3": "~3.2.4",
+    "underscore": "~1.5.0",
+    "font-awesome": "4.2.0",
+    "bootstrap": "~3.2.0",
+    "moment": "",
+    "angular-moment": "",
+  },
+  "directory": "app/lib/",
+  "resolutions": {
+    "angular": "1.3.0"
+  }
+}
