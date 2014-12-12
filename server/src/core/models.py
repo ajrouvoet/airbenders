@@ -5,6 +5,9 @@ class Resource(models.Model):
 
   name = models.CharField(max_length=256)
 
+  def __str__(self):
+    return self.name
+
 class Room(Resource):
 
   class Meta:
@@ -14,9 +17,6 @@ class Room(Resource):
   capacity = models.IntegerField()
   description = models.TextField(null=True, blank=True)
   floor_fk = models.ForeignKey('FloorLayout')
-
-  def __str__(self):
-    return self.name
 
 class Reservation(models.Model):
 
