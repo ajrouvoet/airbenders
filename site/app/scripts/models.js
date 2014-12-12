@@ -13,9 +13,19 @@ angular.module("airbender.models", ["ngResource", "airbender.config"])
   }])
 
   // reservations
-  .factory("reservsResource", ["api", "$resource", function (api, $resource) {
+  .factory("reservResource", ["api", "$resource", function (api, $resource) {
     return $resource(
       api + '/reservs/:id/',
+      {
+        id: "@id"
+      }
+    );
+  }])
+
+  // rooms
+  .factory("roomResource", ["api", "$resource", function (api, $resource) {
+    return $resource(
+      api + '/rooms/:id/',
       {
         id: "@id"
       }

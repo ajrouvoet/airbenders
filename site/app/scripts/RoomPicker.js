@@ -1,10 +1,14 @@
-angular.module('airbender.directives', [])
-  .directive('roomPicker', function() {
+angular.module('airbender.directives', ['airbender.models'])
+  .directive('roomPicker', ['roomResource', function(Rooms) {
     return {
       templateUrl: '/views/roompicker.html',
-      controller: function($scope) {
+      controller: ['$scope', function($scope) {
         console.log("RoomPickCtrl checking in");
-      },
+
+        var rooms = $scope.rooms = Rooms.query(function() {
+          console.log(rooms);
+        });
+      }]
     };
-  });
+  }]);
 
