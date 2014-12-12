@@ -28,8 +28,14 @@ angular.module('airbender.directives.availability', ['airbender.models'])
   .directive('availability', function() {
     return {
       templateUrl: "/views/availability.html",
+      scope: {
+        availabilityData: '=',
+        floorplanData: '='
+      },
       link: function($scope, $elem) {
         console.log("Availability directive loaded...");
+        console.log($scope.floorplanData);
+        console.log($scope.availabilityData);
 
         // create the svg canvas
         var slotWidth = 60;

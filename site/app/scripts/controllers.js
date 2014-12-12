@@ -12,12 +12,12 @@ angular.module('airbender.controllers', ['airbender.models'])
     $scope.floor = 1;
 
     // load all availability data for this building
-    $scope.availabs = Availabs.get({
+    $scope.availabsData = Availabs.get({
       building: $scope.building
     });
 
     // load the entire floorplan
-    $scope.floorplan = Floorplans.get({
+    $scope.floorplanData = Floorplans.get({
       id: $scope.building
     });
 
@@ -26,7 +26,7 @@ angular.module('airbender.controllers', ['airbender.models'])
     //
 
     $scope.floorplan = function(floorNo) {
-      return _.find(floorplan, function(f) { return f.floor == floorNo; });
+      return _.find($scope.floorplanData, function(f) { return f.floor == floorNo; });
     };
   }])
 
