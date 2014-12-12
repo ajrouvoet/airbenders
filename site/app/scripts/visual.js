@@ -9,9 +9,9 @@ angular.module('airbender.directives', [])
           var svg = d3.select(element[0]).append("svg")
                                          .attr("width", 800)
                                          .attr("height", 600);
-          var data = [{"x": 20, "y": 0}, 
-                      {"x": 30, "y": 70},
-                      {"x": 70, "y": 140}];
+          var data = [{"x": 20, "y": 0, "label": "text1"}, 
+                      {"x": 30, "y": 70, "label": "text2"},
+                      {"x": 70, "y": 140, "label": "text3"}];
 
           scope.render = function() {
             svg.selectAll("*").remove();
@@ -20,14 +20,21 @@ angular.module('airbender.directives', [])
                .data(data)
                .enter()
                .append("rect")
-                 .attr("width", 50)
+                 .attr("width", 60)
                  .attr("height", 60)
                  .attr("x", function(d, i) { return d.x; }) 
                  .attr("y", function(d, i) { return d.y; }) 
-                 .style("border", "1px solid black")
+                 .style("border", "1px solid black");
+
+            svg.selectAll("text")
+               .data(data)
+               .enter()
                .append("text")
-                  .attr("class", "label")
-                  .text("Hello");
+                 .attr("class", "label")
+                 .attr('x', function(d, i) { return d.x + 12.5; })
+                 .attr('y', function(d, i) { return d.y + 30; })
+                 .attr('fill', 'yellow')
+                 .text(function(d, i) { return d.label; });
 
           }
 
