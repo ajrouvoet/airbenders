@@ -1,4 +1,6 @@
 angular.module('airbender', [
+    'd3',
+    'airbender.directives',
     'airbender.models',
     'ui.router'
   ])

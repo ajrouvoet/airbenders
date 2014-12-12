@@ -18,7 +18,8 @@
     "bootstrap": "~3.2.0",
     "moment": "",
     "angular-moment": "",
-    "angular-ui-bootstrap-bower": ""
+    "angular-ui-bootstrap-bower": "",
+    "d3": ""
   },
   "directory": "app/lib/",
   "resolutions": {
