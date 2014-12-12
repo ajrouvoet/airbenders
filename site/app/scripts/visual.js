@@ -1,3 +1,41 @@
+function labelPosition(roomLayout) {
+  var points = roomLayout.split(',');
+  var pointsLength = points.length;
+  
+  var lx = parseInt(points[0]);
+  var ly = parseInt(points[1]);
+  var sx = parseInt(points[0]);
+  var sy = parseInt(points[1]);
+
+  for (var i = 2; i < pointsLength; i++) {
+    if(i % 2) {
+      if(points[i] > ly) {
+        ly = parseInt(points[i]);
+      }
+
+      if(points[i] < sy) {
+        sy = parseInt(points[i]);
+      }
+
+    } else {
+      if(points[i] > lx) {
+        lx = parseInt(points[i]);
+      }
+
+      if(points[i] < sx) {
+        sx = parseInt(points[i]);
+      }
+    }
+  }
+
+  var x = ((lx - sx) / 2)+sx;
+  var y = ((ly - sy) / 2)+sy;
+  
+  var label = {"x" : x, "y": y};
+
+  return label;
+}
+
 angular.module('airbender.directives.visual', [])
   .directive('floorplan', ['$window', 'd3Service', function($window, d3Service) {
     return {
@@ -12,34 +50,46 @@ angular.module('airbender.directives.visual', [])
           var svg = d3.select(element[0]).append("svg")
                                          .attr("width", width)
                                          .attr("height", height);
-        
-          var data = [{"points": "10,0,10,100,110,100,110,0", "label": {"text": "text1", "x": 50, "y": 50}}, 
-                      {"points": "10,110,10,210,110,210,110,110", "label": {"text": "text2", "x": 50, "y": 150}},
-                      {"points": "120,110,120,210,220,210,220,110", "label": {"text": "text3", "x": 150, "y": 150}},
-                      {"points": "120,0,120,100,220,100,220,0", "label": {"text": "text4", "x": 150, "y": 50}}];
 
-          scope.render = function() {
+          $scope.$watchCollection('floorplanData', function(f) {
+            console.log("I have rooms data!");
+            if(f) {
+              console.log(f.layout.rooms);
+              var data = floor.layout.rooms;
+              scope.render(data);
+            }
+          });
+
+          
+
+          scope.render = function(rooms) {
             svg.selectAll("*").remove();
             
             svg.selectAll("polygon")
-               .data(data)
+               .data(rooms)
                .enter()
                .append("polygon")
-                 .attr("points", function(d, i) { return d.points; })
+                 .attr("points", function(d, i) { return d.layout.toString(); })
                  .style("border", "1px solid black");
 
             svg.selectAll("text")
-               .data(data)
+               .data(rooms)
                .enter()
                .append("text")
                  .attr("class", "label")
-                 .attr('x', function(d, i) { return d.label.x; })
-                 .attr('y', function(d, i) { return d.label.y; })
+                 .attr('x', function(d, i) { 
+                   var result = labelPosition(d.layout.toString());
+                   return result.x; 
+                 })
+                 .attr('y', function(d, i) { 
+                   var result = labelPosition(d.layout.toString());
+                   return result.y;  
+                 })
                  .attr('fill', 'yellow')
-                 .text(function(d, i) { return d.label.text; });
+                 .text(function(d, i) { return d.name; });
           }
 
-          scope.render();
+          
 
 
           window.onresize = function() {
