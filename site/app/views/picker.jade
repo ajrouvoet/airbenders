@@ -22,9 +22,18 @@ div#room-picker.step.container
 
       div(floorplan floorplan-data="floorplan")
 
-    .col-md-5(availability
-      floorplan-data="floorplan"
-      rooms="rooms"
-      availability-data="availabsData"
-      day="day"
-    )
+    .col-md-5
+
+      div#day-picker
+        button#previous-day.btn-borderless(ng-click="prevDay()")
+          | <
+        span.day {{ day.format("dddd") }}, {{ day.format("MMMM d") }}
+        button#next-day.btn-borderless(ng-click="nextDay()")
+          | >
+
+      div(availability
+        floorplan-data="floorplan"
+        rooms="rooms"
+        availability-data="availabsData"
+        day="day"
+      )

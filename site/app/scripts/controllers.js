@@ -1,9 +1,10 @@
 angular.module('airbender.controllers', ['airbender.models'])
   .controller('PickerCtrl', [
     '$scope',
+    '$timeout',
     'availabilityResource',
     'buildingResource',
-    function($scope, Availabs, Floorplans) {
+    function($scope, $timeout, Availabs, Floorplans) {
     // hardcoded building for now
     $scope.building = 1;
 
@@ -36,7 +37,10 @@ angular.module('airbender.controllers', ['airbender.models'])
     }
     $scope.$watchCollection('floorplanData', updateFloorplan);
     $scope.$watch('floor', updateFloorplan);
-    $scope.$watch('floorplan', function(v) {console.log("floor: " + v)});
+
+    // change day functions
+    $scope.nextDay = function() { $scope.day = $scope.day.add(1, 'day').clone(); }
+    $scope.prevDay = function() { $scope.day = $scope.day.subtract(1, 'day').clone(); }
   }])
 
   .controller("DatePickCtrl", ["$scope", function($scope) {

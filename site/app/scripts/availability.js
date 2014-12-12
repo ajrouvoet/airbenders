@@ -104,9 +104,11 @@ angular.module('airbender.directives.availability', ['airbender.models'])
         drawSlots(svg, slotWidth, 80);
 
         function updateAvailability(a) {
+          console.log("updating", $scope.day);
           drawAvailability(svg, slotWidth, 80, $scope.day, a);
         }
         $scope.$watchCollection('availabilityData', updateAvailability);
+        $scope.$watch('day', updateAvailability);
       },
 
       template: "<h3 class='room-name'>{{ room.name }}</h3><div class='availability-canvas'>"
