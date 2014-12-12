@@ -98,7 +98,8 @@ angular.module('airbender.directives.availability', ['airbender.models'])
         drawSlots(svg, slotWidth, 80);
 
         function updateAvailability(a) {
-          drawAvailability(svg, slotWidth, 80, $scope.day.clone(), a);
+          console.log("Redrawing");
+          drawAvailability(svg, slotWidth, 80, $scope.day.clone(), a[$scope.room.id] || []);
         }
         $scope.$watchCollection('availabilityData', updateAvailability);
         $scope.$watch('day', updateAvailability);
