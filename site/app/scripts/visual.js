@@ -1,17 +1,23 @@
-angular.module('airbender.directives', [])
+angular.module('airbender.directives.visual', [])
   .directive('floorplan', ['$window', 'd3Service', function($window, d3Service) {
     return {
       restrict: 'EA',
       scope: {},
       link: function(scope, element, attrs) {
         d3Service.d3().then(function(d3) {
-           
+          
+          var height = window.screen.availHeight;
+          var width = window.screen.availWidth / 2;
+
           var svg = d3.select(element[0]).append("svg")
-                                         .attr("width", 800)
-                                         .attr("height", 600);
+                                         .attr("width", width)
+                                         .attr("height", height);
+
           var data = [{"x": 20, "y": 0, "label": "text1"}, 
                       {"x": 30, "y": 70, "label": "text2"},
                       {"x": 70, "y": 140, "label": "text3"}];
+          
+
 
           scope.render = function() {
             svg.selectAll("*").remove();
