@@ -24,28 +24,71 @@ function drawSlots(svg, width, height) {
   return [slots, labels];
 }
 
+function drawAvailability(svg, slotWidth, slotHeight, day, availability) {
+  console.log('day', day.startOf('day'));
+  function toX(d) {
+    var x = d * (slotWidth * 24) / (24 * 60 * 60 * 1000);
+    console.log(d, x);
+    if(x < 0)
+      return 0;
+    else
+      return x;
+  }
+  function findX(occ) {
+    console.log("x of " + occ.id);
+    var d = moment(occ.when_from).diff(day.startOf('day'));
+    return toX(d);
+  }
+  function findWidth(occ) {
+    var d = moment(occ.when_to).diff(moment(occ.when_from));
+    return toX(d);
+  }
+  return svg.selectAll('.occupied')
+    .data(availability)
+    .enter()
+    .append('rect')
+      .attr('class', 'occupied')
+      .attr('width', function(d) { return findWidth(d); })
+      .attr('height', 40)
+      .attr('x', function(d, i) { return findX(d); })
+      .attr('y', slotHeight / 2);
+}
+
 angular.module('airbender.directives.availability', ['airbender.models'])
   .directive('availability', function() {
     return {
       templateUrl: "/views/availability.html",
       scope: {
         availabilityData: '=',
-        floorplanData: '='
+        floorplanData: '=',
+        day: '='
       },
-      link: function($scope, $elem) {
-        console.log("Availability directive loaded...");
-
-        $scope.$watchCollection('floorplanData', function(oldData, newData) {
-          console.log("Floorplan received in availability unit");
-          if(newData) {
-            console.log(newData.layout.rooms);
-          }
+      controller: ['$scope', function($scope) {
+        $scope.rooms = [];
+        $scope.$watchCollection('floorplanData', function(f) {
+          if(f) $scope.rooms = f.layout.rooms;
         });
 
+        // function to get availability for a specific room
+        $scope.roomAvailability = function(room) {
+          return $scope.availabilityData[room.id] || [];
+        };
+      }]
+    }
+  })
+
+  .directive('roomAvailability', function() {
+    return {
+      scope: {
+        room: "=",
+        availabilityData: "=",
+        day: '='
+      },
+
+      link: function($scope, $elem) {
         // create the svg canvas
         var slotWidth = 60;
         var width = 24*slotWidth;
-        console.log(d3.select($elem.find('.availability-canvas')[0]));
         var svg = d3.select($elem.find('.availability-canvas').get(0)).append('svg');
         svg .attr("width", width)
             .attr("height", 80);
@@ -60,11 +103,12 @@ angular.module('airbender.directives.availability', ['airbender.models'])
         // draw the time slots
         drawSlots(svg, slotWidth, 80);
 
-        // draw the line RIGHT HERE
-        // draw the availability
-
+        function updateAvailability(a) {
+          drawAvailability(svg, slotWidth, 80, $scope.day, a);
+        }
+        $scope.$watchCollection('availabilityData', updateAvailability);
       },
-      controller: function() {
-      }
-    }
+
+      template: "<h3 class='room-name'>{{ room.name }}</h3><div class='availability-canvas'>"
+    };
   });

@@ -7,19 +7,24 @@ div#room-picker.step.container
   .row
 
     .col-md-7#rooms
-      .row
-        div#floor-picker
-          .btn-group(dropdown)
-            button.btn.dropdown-toggle(type="button" dropdown-toggle)
-              | Floor 3
-            ul.dropdown-menu(role="menu")
-              li Floor 1
-              li Floor 2
-              li.divider
-              li Floor 3
-              li.divider
-              li Floor 4
-              li Floor 5
-      .row
-        div(floorplan floorplan-data="floorplan")
-    .col-md-5(availability floorplan-data="floorplan" rooms="rooms" availability-data="availabsData")
+      div#floor-picker
+        .btn-group(dropdown)
+          button.btn.dropdown-toggle(type="button" dropdown-toggle)
+            | Floor 3
+          ul.dropdown-menu(role="menu")
+            li Floor 1
+            li Floor 2
+            li.divider
+            li Floor 3
+            li.divider
+            li Floor 4
+            li Floor 5
+
+      div(floorplan floorplan-data="floorplan")
+
+    .col-md-5(availability
+      floorplan-data="floorplan"
+      rooms="rooms"
+      availability-data="availabsData"
+      day="day"
+    )

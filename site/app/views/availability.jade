@@ -5,8 +5,9 @@ div#day-picker
   button#next-day.btn-borderless
     | >
 
-div#availability
-  div.room
-    h3.room-name
-      | Nicky
-    div.availability-canvas
+div#availability(ng-repeat="room in rooms")
+  div.room(room-availability
+    room="room"
+    availability-data="roomAvailability(room)"
+    day="day"
+  )

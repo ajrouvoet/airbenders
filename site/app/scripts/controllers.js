@@ -10,6 +10,7 @@ angular.module('airbender.controllers', ['airbender.models'])
     // init
     // current floor
     $scope.floor = 3;
+    $scope.day = moment();
 
     // load all availability data for this building
     $scope.availabsData = Availabs.get({
