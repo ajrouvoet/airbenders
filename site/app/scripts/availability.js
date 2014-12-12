@@ -101,9 +101,15 @@ angular.module('airbender.directives.availability', ['airbender.models'])
 
         $scope.thisAvailab = [];
         $scope.nodes = d3.select();
-        function updateAvailability(a) {
+        function updateAvailability() {
           $scope.nodes.remove();
-          $scope.nodes = drawAvailability(svg, slotWidth, 80, $scope.day.clone(), a[$scope.room.id] || []);
+          $scope.nodes = drawAvailability(
+            svg,
+            slotWidth,
+            80,
+            $scope.day.clone(),
+            $scope.availabilityData[$scope.room.id] || []
+          );
         }
         $scope.$watchCollection('availabilityData', updateAvailability);
         $scope.$watch('day', updateAvailability);

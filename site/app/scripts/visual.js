@@ -65,11 +65,9 @@ angular.module('airbender.directives.visual', ['airbender.models'])
           // (re)draw mechanics
           $scope.drawings = [];
           $scope.$watchCollection('floorplanData', function(newData) {
-            console.log("I have rooms data!");
-            console.log("newData: "+JSON.stringify(newData));
+            console.log("Map got new rooms data!");
 
             if(newData) {
-              console.log(JSON.stringify(newData.layout.rooms));
               var data = newData.layout.rooms;
 
               for(var d in $scope.drawings) {
@@ -96,7 +94,6 @@ angular.module('airbender.directives.visual', ['airbender.models'])
                     return d.layout.toString();
                   })
                  .on('click', function(d, i) {
-                    console.log(i+" "+JSON.stringify(d));
                     return $scope.onClick({item: d});
                   });
 
