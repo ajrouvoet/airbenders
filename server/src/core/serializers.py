@@ -63,6 +63,7 @@ class RoomSerializer(serializers.ModelSerializer):
 
 class FloorLayoutSerializer(serializers.ModelSerializer):
   rooms = RoomSerializer(source='floor_fk.room_set', many=True)
+  layout = CoordinatesSerializer()
 
   class Meta:
     model = FloorLayout
