@@ -30,4 +30,14 @@ angular.module("airbender.models", ["ngResource", "airbender.config"])
         id: "@id"
       }
     );
+  }])
+
+  // rooms
+  .factory("buildingResource", ["api", "$resource", function (api, $resource) {
+    return $resource(
+      api + '/buildingls/:id/',
+      {
+        id: "@id"
+      }
+    );
   }]);
