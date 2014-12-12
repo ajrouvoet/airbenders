@@ -62,6 +62,8 @@ angular.module('airbender.directives.visual', ['airbender.models'])
             }
           });
 
+          // (re)draw mechanics
+          $scope.drawings = [];
           $scope.$watchCollection('floorplanData', function(newData) {
             console.log("I have rooms data!");
             console.log("newData: "+JSON.stringify(newData));
@@ -69,16 +71,23 @@ angular.module('airbender.directives.visual', ['airbender.models'])
             if(newData) {
               console.log(JSON.stringify(newData.layout.rooms));
               var data = newData.layout.rooms;
-              $scope.render(data);
+
+              for(var d in $scope.drawings) {
+                $scope.drawings[d].remove()
+              }
+              $scope.drawings = $scope.render(data);
+            } else {
+              for(var d in $scope.drawings) {
+                $scope.drawings[d].remove()
+              }
             }
           });
 
-
-
+          // redraw function
           $scope.render = function(rooms) {
             svg.selectAll("*").remove();
 
-            svg.selectAll("polygon")
+            var poly = svg.selectAll("polygon")
                .data(rooms)
                .enter()
                .append("polygon")
@@ -91,7 +100,7 @@ angular.module('airbender.directives.visual', ['airbender.models'])
                     return $scope.onClick({item: d});
                   });
 
-            svg.selectAll("text")
+            var labels = svg.selectAll("text")
                .data(rooms)
                .enter()
                .append("text")
@@ -105,6 +114,8 @@ angular.module('airbender.directives.visual', ['airbender.models'])
                    return result.y;
                  })
                  .text(function(d, i) { return d.name; });
+
+             return [poly, labels];
           }
 
 
