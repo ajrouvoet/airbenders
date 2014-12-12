@@ -97,9 +97,11 @@ angular.module('airbender.directives.availability', ['airbender.models'])
         // draw the time slots
         drawSlots(svg, slotWidth, 80);
 
+        $scope.thisAvailab = [];
+        $scope.nodes = d3.select();
         function updateAvailability(a) {
-          console.log("Redrawing");
-          drawAvailability(svg, slotWidth, 80, $scope.day.clone(), a[$scope.room.id] || []);
+          $scope.nodes.remove();
+          $scope.nodes = drawAvailability(svg, slotWidth, 80, $scope.day.clone(), a[$scope.room.id] || []);
         }
         $scope.$watchCollection('availabilityData', updateAvailability);
         $scope.$watch('day', updateAvailability);
