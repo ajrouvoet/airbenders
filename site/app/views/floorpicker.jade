@@ -2,6 +2,6 @@ div#floor-picker
   .btn-group(dropdown)
     button.btn.dropdown-toggle(type="button" dropdown-toggle)
       | Floor {{ floor }}
-    ul.dropdown-menu(role="menu" ng-repeat="fl in floors")
-      li(ng-click="selectFloor(fl)")
+    ul.dropdown-menu(role="menu" )
+      li(ng-repeat="fl in floors" ng-click="selectFloor(fl)")
        | Floor {{ fl }}
