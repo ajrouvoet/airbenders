@@ -1,2 +1,28 @@
-h3
-  | Pick a room!
+div#room-picker.container
+  .row
+    h2
+      | Find a room!
+
+  form.form
+    .row
+      .col-xs-2
+        label Email
+      .col-xs-3
+        input(type="text")
+    .row
+      .col-xs-2
+        label From
+      .col-xs-3
+        input(type="text")
+    .row
+      .col-xs-2
+        label To
+      .col-xs-3
+        input(type="text")
+
+
+  #rooms(ng-repeat="room in rooms")
+    .row
+      .title
+        .col-xs-4
+          | {{ room.name }}

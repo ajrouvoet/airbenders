@@ -6,7 +6,6 @@ angular.module('airbender.directives', ['airbender.models'])
         console.log("RoomPickCtrl checking in");
 
         var rooms = $scope.rooms = Rooms.query(function() {
-          console.log(rooms);
         });
       }]
     };

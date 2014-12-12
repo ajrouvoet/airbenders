@@ -13,9 +13,26 @@ $base03: #002b36
 $base02: #073642
 $base01: #586e75
 $base00: #657b83
+$base0: #EEE
+$base1: #93a1a1
+$base2: #eee8d5
+$base3: #fdf6e3
 
 body
-  background-color: #EEE
+  background-color: lighten($base01, 20%)
+  color: $base0
+  font-size: 16pt
+  font-weight: lighter
+
+header
+  background-color: $blue
+  color: $base0
+
+  h1
+    color: $base0
+
+  h2
+    color: $base0
 
 h1
   color: $blue
@@ -23,3 +40,28 @@ h1
 
 h2
   color: $base01
+  font-size: 20pt
+  font-weight: bold
+
+#room-picker
+
+  form
+    label
+      font-weight: lighter
+
+    .row
+      padding: 5px
+    margin:
+      top: 20px
+      bottom: 20px
+
+  #rooms
+    .row
+      background-color: lighten($base01, 25%)
+      margin-bottom: 20px
+
+      .title
+        height: 50px
+        line-height: 50px
+        border-left: 8px solid $green
+        font-size: 20pt
