@@ -22,6 +22,7 @@ router = AngularRouter(trailing_slash=False)
 router.register(r'users', UserViewSet)
 router.register(r'reservs', ReservationViewSet)
 router.register(r'rooms', RoomViewSet)
+router.register(r'buildings', BuildingViewSet)
 
 urls = [
   url(r'^', include(router.urls)),

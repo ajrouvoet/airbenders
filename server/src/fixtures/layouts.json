@@ -1,0 +1,50 @@
+[
+{
+    "fields": {
+        "name": "Miley Cyrus"
+    },
+    "model": "core.resource",
+    "pk": 1
+},
+{
+    "fields": {
+        "number": "3.27",
+        "floor_fk": 1,
+        "description": "I don't like it either",
+        "capacity": 18
+    },
+    "model": "core.room",
+    "pk": 1
+},
+{
+    "fields": {
+        "name": "Cherry"
+    },
+    "model": "core.building",
+    "pk": 1
+},
+{
+    "fields": {
+        "floor": 3,
+        "building": 1
+    },
+    "model": "core.floor",
+    "pk": 1
+},
+{
+    "fields": {
+        "layout": "[[1,1],[4,1],[4,4],[1,4]]",
+        "room": 1
+    },
+    "model": "core.roomlayout",
+    "pk": 1
+},
+{
+    "fields": {
+        "floor_fk": 1,
+        "layout": "[[0,0],[100,0],[100,20],[0,20]]"
+    },
+    "model": "core.floorlayout",
+    "pk": 1
+}
+]
