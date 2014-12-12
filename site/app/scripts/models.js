@@ -32,10 +32,20 @@ angular.module("airbender.models", ["ngResource", "airbender.config"])
     );
   }])
 
-  // rooms
+  // building plans
   .factory("buildingResource", ["api", "$resource", function (api, $resource) {
     return $resource(
-      api + '/buildingls/:id/',
+      api + '/buildings/:id/',
+      {
+        id: "@id"
+      }
+    );
+  }])
+
+  // availability
+  .factory("availabilityResource", ["api", "$resource", function (api, $resource) {
+    return $resource(
+      api + '/availabilities/:id/',
       {
         id: "@id"
       }
