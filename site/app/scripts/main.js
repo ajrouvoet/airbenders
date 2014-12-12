@@ -1,15 +1,23 @@
 angular.module('airbender', [
     'airbender.models',
-    'airbender.directives'
+    'airbender.controllers',
+    'ui.bootstrap',
+    'ui.router'
   ])
+
+  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("/picker");
+    //
+    // Now set up the states
+    $stateProvider
+      .state('picker', {
+        url: "/picker",
+        templateUrl: "views/picker.html"
+      });
+  }])
+
   .run(['userResource', function(Users) {
     console.log('Airbender is up!');
-
-    var users = Users.query(function() {
-      _(users).each(function(u) {
-        console.log(u);
-      });
-    });
   }]);
 
 angular.element(document).ready(function() {

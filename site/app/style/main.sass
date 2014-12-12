@@ -19,8 +19,8 @@ $base2: #eee8d5
 $base3: #fdf6e3
 
 body
-  background-color: lighten($base01, 20%)
-  color: $base0
+  background-color: $base03
+  color: $base02
   font-size: 16pt
   font-weight: lighter
 
@@ -43,25 +43,22 @@ h2
   font-size: 20pt
   font-weight: bold
 
+.step
+  background-color: #EEE
+  min-height: 800px
+
 #room-picker
 
-  form
-    label
-      font-weight: lighter
-
-    .row
-      padding: 5px
-    margin:
-      top: 20px
-      bottom: 20px
+  .row
+    height: 100%
 
   #rooms
-    .row
-      background-color: lighten($base01, 25%)
-      margin-bottom: 20px
+    border-right: 1px solid $base02
 
-      .title
-        height: 50px
-        line-height: 50px
-        border-left: 8px solid $green
-        font-size: 20pt
+  #floor-picker
+    width: 100%
+    text-align: center
+
+  #day-picker
+    width: 100%
+    text-align: center
