@@ -1,7 +1,5 @@
 angular.module('airbender', [
     'airbender.models',
-    'airbender.controllers',
-    'ui.bootstrap',
     'ui.router'
   ])
 
