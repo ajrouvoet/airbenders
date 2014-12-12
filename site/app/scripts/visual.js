@@ -30,7 +30,7 @@ function labelPosition(roomLayout) {
 
   var x = ((lx - sx) / 2)+sx;
   var y = ((ly - sy) / 2)+sy;
-  
+
   var label = {"x" : x, "y": y};
 
   return label;
@@ -44,15 +44,23 @@ angular.module('airbender.directives.visual', ['airbender.models'])
         floorplanData: '=',
         onClick: '&'
       },
+      template: "<div class='canvas'>",
       link: function($scope, $element, $attrs) {
         d3Service.d3().then(function(d3) {
-          
-          var height = window.screen.availHeight;
-          var width = window.screen.availWidth / 2;
 
-          var svg = d3.select($element[0]).append("svg")
+          var height = 1000;
+          var width = 1000;
+          var canvas = $element.find('.canvas');
+
+          var svg = d3.select(canvas[0]).append("svg")
                                          .attr("width", width)
                                          .attr("height", height);
+
+          canvas.find('svg').draggable({
+            drag: function(event, ui) {
+              return true;
+            }
+          });
 
           $scope.$watchCollection('floorplanData', function(newData) {
             console.log("I have rooms data!");

@@ -9,7 +9,7 @@ angular.module('airbender.controllers', ['airbender.models'])
     $scope.building = 1;
 
     // init
-    // current floor
+    $scope.floors = [1, 2, 3, 4, 5];
     $scope.floor = 3;
     $scope.day = moment();
 

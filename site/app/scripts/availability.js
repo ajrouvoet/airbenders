@@ -109,4 +109,20 @@ angular.module('airbender.directives.availability', ['airbender.models'])
 
       template: "<h3 class='room-name'>{{ room.name }}</h3><div class='availability-canvas'>"
     };
-  }]);
+  }])
+
+  .directive('floorPicker', function() {
+    return {
+      templateUrl: "/views/floorpicker.html",
+      scope: {
+        floors: '=',
+        floor: '='
+      },
+      link: function($scope) {
+        $scope.selectFloor = function(f) {
+          console.log("sel" + f);
+          $scope.floor = f;
+        };
+      }
+    };
+  });
