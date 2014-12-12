@@ -65,6 +65,8 @@ angular.module('airbender.directives.availability', ['airbender.models'])
         $scope.$watchCollection('floorplanData', function(f) {
           if(f) {
             $scope.rooms = f.layout.rooms;
+          } else {
+            $scope.rooms = [];
           }
         });
       }]
