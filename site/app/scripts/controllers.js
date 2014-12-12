@@ -14,9 +14,14 @@ angular.module('airbender.controllers', ['airbender.models'])
     $scope.day = moment();
 
     // load all availability data for this building
-    $scope.availabsData = Availabs.get({
-      building: $scope.building
-    });
+    $scope.availabsData = [];
+    function updateAvailabs() {
+      return $scope.availabsData = Availabs.get({
+        building: $scope.building,
+        onday: $scope.day.toISOString()
+      });
+    }
+    updateAvailabs();
 
     // load the entire floorplan
     $scope.floorplanData = Floorplans.get({
@@ -28,7 +33,7 @@ angular.module('airbender.controllers', ['airbender.models'])
     //
 
     function getFloorplan(floorplanData, floorNo) {
-      return _.find(floorplanData.floors, function(f) { return f.floor == floorNo; });
+      return _.find(floorplanData.floors, function(f) { return f.floor === floorNo; });
     }
 
     $scope.floorplan = null;
@@ -41,6 +46,11 @@ angular.module('airbender.controllers', ['airbender.models'])
     // change day functions
     $scope.nextDay = function() { $scope.day = $scope.day.add(1, 'day').clone(); }
     $scope.prevDay = function() { $scope.day = $scope.day.subtract(1, 'day').clone(); }
+
+    // update availabs on day change
+    $scope.$watch("day", function() {
+      updateAvailabs();
+    });
   }])
 
   .controller("DatePickCtrl", ["$scope", function($scope) {

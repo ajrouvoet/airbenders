@@ -1,7 +1,7 @@
 function labelPosition(roomLayout) {
   var points = roomLayout.split(',');
   var pointsLength = points.length;
-  
+
   var lx = parseInt(points[0]);
   var ly = parseInt(points[1]);
   var sx = parseInt(points[0]);

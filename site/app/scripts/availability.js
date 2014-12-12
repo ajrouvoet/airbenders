@@ -25,17 +25,14 @@ function drawSlots(svg, width, height) {
 }
 
 function drawAvailability(svg, slotWidth, slotHeight, day, availability) {
-  console.log('day', day.startOf('day'));
   function toX(d) {
     var x = d * (slotWidth * 24) / (24 * 60 * 60 * 1000);
-    console.log(d, x);
     if(x < 0)
       return 0;
     else
       return x;
   }
   function findX(occ) {
-    console.log("x of " + occ.id);
     var d = moment(occ.when_from).diff(day.startOf('day'));
     return toX(d);
   }
@@ -55,7 +52,7 @@ function drawAvailability(svg, slotWidth, slotHeight, day, availability) {
 }
 
 angular.module('airbender.directives.availability', ['airbender.models'])
-  .directive('availability', function() {
+  .directive('availability', ['$timeout', function($timeout) {
     return {
       templateUrl: "/views/availability.html",
       scope: {
@@ -66,18 +63,20 @@ angular.module('airbender.directives.availability', ['airbender.models'])
       controller: ['$scope', function($scope) {
         $scope.rooms = [];
         $scope.$watchCollection('floorplanData', function(f) {
-          if(f) $scope.rooms = f.layout.rooms;
+          if(f) {
+            $scope.rooms = f.layout.rooms;
+          }
         });
 
         // function to get availability for a specific room
-        $scope.roomAvailability = function(room) {
+        $scope.roomAvailability = function(room) { $timeout(function() {
           return $scope.availabilityData[room.id] || [];
-        };
+        })};
       }]
     }
-  })
+  }])
 
-  .directive('roomAvailability', function() {
+  .directive('roomAvailability', ['$timeout', function($timeout) {
     return {
       scope: {
         room: "=",
@@ -104,13 +103,14 @@ angular.module('airbender.directives.availability', ['airbender.models'])
         drawSlots(svg, slotWidth, 80);
 
         function updateAvailability(a) {
-          console.log("updating", $scope.day);
-          drawAvailability(svg, slotWidth, 80, $scope.day, a);
+          drawAvailability(svg, slotWidth, 80, $scope.day.clone(), a);
         }
-        $scope.$watchCollection('availabilityData', updateAvailability);
+        $scope.$watchCollection('availabilityData', function() {
+          updateAvailability;
+        });
         $scope.$watch('day', updateAvailability);
       },
 
       template: "<h3 class='room-name'>{{ room.name }}</h3><div class='availability-canvas'>"
     };
-  });
+  }]);
