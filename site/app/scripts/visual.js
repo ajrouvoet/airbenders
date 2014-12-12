@@ -41,7 +41,8 @@ angular.module('airbender.directives.visual', ['airbender.models'])
     return {
       restrict: 'EA',
       scope: {
-        floorplanData: '='
+        floorplanData: '=',
+        onClick: '&'
       },
       link: function($scope, $element, $attrs) {
         d3Service.d3().then(function(d3) {
@@ -74,6 +75,10 @@ angular.module('airbender.directives.visual', ['airbender.models'])
                .enter()
                .append("polygon")
                  .attr("points", function(d, i) { return d.layout.toString(); })
+                 .on('click', function(d, i) {
+                    console.log(i+" "+JSON.stringify(d));
+                    return $scope.onClick({item: d});
+                  })
                  .style("border", "1px solid black");
 
             svg.selectAll("text")

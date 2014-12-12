@@ -2,7 +2,7 @@ div.step-title
   .container
     .row
       h2 Meeting rooms
-
+div(ng-controller="PickerCtrl")
 div#room-picker.step.container
   .row
 
@@ -20,7 +20,7 @@ div#room-picker.step.container
             li Floor 4
             li Floor 5
 
-      div(floorplan floorplan-data="floorplan")
+      div(floorplan floorplan-data="floorplan" on-click="showAvailabilityPanel(item)")
 
     .col-md-5
 

@@ -28,6 +28,9 @@ angular.module('airbender.controllers', ['airbender.models'])
       id: $scope.building
     });
 
+    $scope.showAvailabilityPanel = function(item){
+      console.log("joala: "+JSON.stringify(item));
+    }
     //
     // some utility values
     //
