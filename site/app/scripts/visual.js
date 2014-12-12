@@ -36,33 +36,37 @@ function labelPosition(roomLayout) {
   return label;
 }
 
-angular.module('airbender.directives.visual', [])
+angular.module('airbender.directives.visual', ['airbender.models'])
   .directive('floorplan', ['$window', 'd3Service', function($window, d3Service) {
     return {
       restrict: 'EA',
-      scope: {},
-      link: function(scope, element, attrs) {
+      scope: {
+        floorplanData: '='
+      },
+      link: function($scope, $element, $attrs) {
         d3Service.d3().then(function(d3) {
           
           var height = window.screen.availHeight;
           var width = window.screen.availWidth / 2;
 
-          var svg = d3.select(element[0]).append("svg")
+          var svg = d3.select($element[0]).append("svg")
                                          .attr("width", width)
                                          .attr("height", height);
 
-          scope.$watchCollection('floorplanData', function(f) {
+          $scope.$watchCollection('floorplanData', function(newData) {
             console.log("I have rooms data!");
-            if(f) {
-              console.log(f.layout.rooms);
-              var data = floor.layout.rooms;
-              scope.render(data);
+            console.log("newData: "+JSON.stringify(newData));
+
+            if(newData) {
+              console.log(JSON.stringify(newData.layout.rooms));
+              var data = newData.layout.rooms;
+              $scope.render(data);
             }
           });
 
           
 
-          scope.render = function(rooms) {
+          $scope.render = function(rooms) {
             svg.selectAll("*").remove();
             
             svg.selectAll("polygon")
@@ -93,7 +97,7 @@ angular.module('airbender.directives.visual', [])
 
 
           window.onresize = function() {
-            scope.$apply();
+            $scope.$apply();
           };
 
         });

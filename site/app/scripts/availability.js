@@ -35,10 +35,10 @@ angular.module('airbender.directives.availability', ['airbender.models'])
       link: function($scope, $elem) {
         console.log("Availability directive loaded...");
 
-        $scope.$watchCollection('floorplanData', function(f) {
+        $scope.$watchCollection('floorplanData', function(oldData, newData) {
           console.log("Floorplan received in availability unit");
-          if(f) {
-            console.log(f.layout.rooms);
+          if(newData) {
+            console.log(newData.layout.rooms);
           }
         });
 
