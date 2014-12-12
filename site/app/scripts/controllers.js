@@ -26,8 +26,7 @@ angular.module('airbender.controllers', ['airbender.models'])
     //
 
     $scope.floorplan = function(floorNo) {
-      // todo
-      return {};
+      return _.find(floorplan, function(f) { return f.floor == floorNo; });
     };
   }])
 
