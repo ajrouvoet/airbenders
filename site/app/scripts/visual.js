@@ -65,40 +65,41 @@ angular.module('airbender.directives.visual', ['airbender.models'])
             }
           });
 
-          
+
 
           $scope.render = function(rooms) {
             svg.selectAll("*").remove();
-            
+
             svg.selectAll("polygon")
                .data(rooms)
                .enter()
                .append("polygon")
-                 .attr("points", function(d, i) { return d.layout.toString(); })
+                 .attr("class", "roomLayout")
+                 .attr("points", function(d, i) {
+                    return d.layout.toString();
+                  })
                  .on('click', function(d, i) {
                     console.log(i+" "+JSON.stringify(d));
                     return $scope.onClick({item: d});
-                  })
-                 .style("border", "1px solid black");
+                  });
 
             svg.selectAll("text")
                .data(rooms)
                .enter()
                .append("text")
                  .attr("class", "label")
-                 .attr('x', function(d, i) { 
+                 .attr('x', function(d, i) {
                    var result = labelPosition(d.layout.toString());
-                   return result.x; 
+                   return result.x;
                  })
-                 .attr('y', function(d, i) { 
+                 .attr('y', function(d, i) {
                    var result = labelPosition(d.layout.toString());
-                   return result.y;  
+                   return result.y;
                  })
-                 .attr('fill', 'yellow')
                  .text(function(d, i) { return d.name; });
           }
 
-          
+
 
 
           window.onresize = function() {
