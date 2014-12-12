@@ -29,13 +29,16 @@ angular.module('airbender.directives.availability', ['airbender.models'])
     return {
       templateUrl: "/views/availability.html",
       scope: {
-        availabilityData: '=',
-        floorplanData: '='
+        availabilityData: '&',
+        floorplanData: '&'
       },
       link: function($scope, $elem) {
         console.log("Availability directive loaded...");
-        console.log($scope.floorplanData);
-        console.log($scope.availabilityData);
+
+        $scope.floorplanData().then(function(floorplan) {
+          console.log("floorplan");
+          console.log(floorplan);
+        });
 
         // create the svg canvas
         var slotWidth = 60;
