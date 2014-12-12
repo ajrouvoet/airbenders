@@ -1,50 +1,171 @@
 [
 {
+    "pk": 1,
     "fields": {
         "name": "Miley Cyrus"
     },
-    "model": "core.resource",
-    "pk": 1
+    "model": "core.resource"
 },
 {
+    "pk": 2,
+    "fields": {
+        "name": "Nautilus"
+    },
+    "model": "core.resource"
+},
+{
+    "pk": 3,
+    "fields": {
+        "name": "Swaggerroom"
+    },
+    "model": "core.resource"
+},
+{
+    "pk": 4,
+    "fields": {
+        "name": "Executive"
+    },
+    "model": "core.resource"
+},
+{
+    "pk": 1,
     "fields": {
         "number": "3.27",
-        "floor_fk": 1,
         "description": "I don't like it either",
-        "capacity": 18
+        "capacity": 18,
+        "floor_fk": 1
     },
-    "model": "core.room",
-    "pk": 1
+    "model": "core.room"
 },
 {
+    "pk": 2,
+    "fields": {
+        "number": "3.28",
+        "description": "",
+        "capacity": 2,
+        "floor_fk": 1
+    },
+    "model": "core.room"
+},
+{
+    "pk": 3,
+    "fields": {
+        "number": "3.38",
+        "description": "",
+        "capacity": 19,
+        "floor_fk": 1
+    },
+    "model": "core.room"
+},
+{
+    "pk": 4,
+    "fields": {
+        "number": "5.1",
+        "description": "Awesome",
+        "capacity": 1,
+        "floor_fk": 2
+    },
+    "model": "core.room"
+},
+{
+    "pk": 1,
+    "fields": {
+        "when_to": "2014-12-12T00:00:00Z",
+        "when_from": "2014-12-12T04:47:03Z",
+        "who": 1,
+        "what": 1
+    },
+    "model": "core.reservation"
+},
+{
+    "pk": 2,
+    "fields": {
+        "when_to": "2014-12-12T04:57:13Z",
+        "when_from": "2014-12-08T04:57:08Z",
+        "who": 2,
+        "what": 1
+    },
+    "model": "core.reservation"
+},
+{
+    "pk": 3,
+    "fields": {
+        "when_to": "2014-12-30T04:57:56Z",
+        "when_from": "2014-12-18T04:57:53Z",
+        "who": 3,
+        "what": 1
+    },
+    "model": "core.reservation"
+},
+{
+    "pk": 1,
     "fields": {
         "name": "Cherry"
     },
-    "model": "core.building",
-    "pk": 1
+    "model": "core.building"
 },
 {
+    "pk": 1,
     "fields": {
         "floor": 3,
         "building": 1
     },
-    "model": "core.floor",
-    "pk": 1
+    "model": "core.floor"
 },
 {
+    "pk": 2,
     "fields": {
-        "layout": "[[100,100],[400,100],[400,400],[100,400]]",
-        "room": 1
+        "floor": 5,
+        "building": 1
     },
-    "model": "core.roomlayout",
-    "pk": 1
+    "model": "core.floor"
 },
 {
+    "pk": 1,
     "fields": {
-        "floor_fk": 1,
-        "layout": "[[0,0],[100,0],[100,20],[0,20]]"
+        "room": 1,
+        "layout": "[[100,100],[400,100],[400,400],[100,400],[100,100]]"
     },
-    "model": "core.floorlayout",
-    "pk": 1
+    "model": "core.roomlayout"
+},
+{
+    "pk": 2,
+    "fields": {
+        "room": 2,
+        "layout": "[[100,550],[400,550],[400,850],[150,850],[100,550]]"
+    },
+    "model": "core.roomlayout"
+},
+{
+    "pk": 3,
+    "fields": {
+        "room": 3,
+        "layout": "[[450,100],[850,100],[850,400],[450,400],[450,100]]"
+    },
+    "model": "core.roomlayout"
+},
+{
+    "pk": 4,
+    "fields": {
+        "room": 4,
+        "layout": "[[50,50],[300,50],[300,300],[350,300],[350,50],[500,50],[500,500],[50,500],[50,50]]"
+    },
+    "model": "core.roomlayout"
+},
+{
+    "pk": 1,
+    "fields": {
+        "layout": "[[0,0],[100,0],[100,20],[0,20]]",
+        "floor_fk": 1
+    },
+    "model": "core.floorlayout"
+},
+{
+    "pk": 2,
+    "fields": {
+        "layout": "[[0,0],[100,0],[100,20],[0,20]]",
+        "floor_fk": 2
+    },
+    "model": "core.floorlayout"
 }
 ]
