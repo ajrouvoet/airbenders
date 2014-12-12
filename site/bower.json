@@ -19,7 +19,8 @@
     "moment": "",
     "angular-moment": "",
     "angular-ui-bootstrap-bower": "",
-    "d3": ""
+    "d3": "",
+    "angular-bootstrap": ""
   },
   "directory": "app/lib/",
   "resolutions": {
