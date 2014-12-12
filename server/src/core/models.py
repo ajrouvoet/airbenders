@@ -16,7 +16,7 @@ class Room(Resource):
   number = models.CharField(max_length=16)
   capacity = models.IntegerField()
   description = models.TextField(null=True, blank=True)
-  floor_fk = models.ForeignKey('FloorLayout')
+  floor_fk = models.ForeignKey('Floor')
 
 class Reservation(models.Model):
 

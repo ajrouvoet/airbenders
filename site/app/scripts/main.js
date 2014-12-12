@@ -1,6 +1,7 @@
 angular.module('airbender', [
     'd3',
     'airbender.directives',
+    'airbender.controllers',
     'airbender.models',
     'ui.router',
     'ui.bootstrap'
@@ -13,7 +14,8 @@ angular.module('airbender', [
     $stateProvider
       .state('picker', {
         url: "/picker",
-        templateUrl: "views/picker.html"
+        templateUrl: "views/picker.html",
+        controller: "PickerCtrl"
       });
   }])
 

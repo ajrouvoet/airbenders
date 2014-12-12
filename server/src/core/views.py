@@ -37,7 +37,7 @@ class AvailabilityView(APIView):
     if building is None:
       rooms = roomqs.all()
     else:
-      rooms = roomqs.filter(building=building)
+      rooms = roomqs.filter(floor_fk__building__pk=building)
 
     reservations = Reservation.objects\
       .order_by('-when_from')\
