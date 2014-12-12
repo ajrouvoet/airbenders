@@ -8,13 +8,19 @@ class UserSerializer(serializers.ModelSerializer):
     model = User
     fields = ('url', 'username', 'first_name', 'last_name', 'email')
 
-class RoomSerializer(serializers.ModelSerializer):
+class ResourceSerializer(serializers.ModelSerializer):
 
   class Meta:
-    model = Room
+    model = Resource
 
 class ReservationSerializer(serializers.ModelSerializer):
   who = UserSerializer()
 
   class Meta:
     model = Reservation
+
+class RoomSerializer(serializers.ModelSerializer):
+  reservations = ReservationSerializer(source='reservation_set', many=True)
+
+  class Meta:
+    model = Room

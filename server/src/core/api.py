@@ -21,6 +21,7 @@ class AngularRouter(routers.DefaultRouter):
 router = AngularRouter(trailing_slash=False)
 router.register(r'users', UserViewSet)
 router.register(r'reservs', ReservationViewSet)
+router.register(r'rooms', RoomViewSet)
 
 urls = [
   url(r'^', include(router.urls)),
