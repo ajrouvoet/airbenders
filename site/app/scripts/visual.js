@@ -51,7 +51,7 @@ angular.module('airbender.directives.visual', [])
                                          .attr("width", width)
                                          .attr("height", height);
 
-          $scope.$watchCollection('floorplanData', function(f) {
+          scope.$watchCollection('floorplanData', function(f) {
             console.log("I have rooms data!");
             if(f) {
               console.log(f.layout.rooms);
