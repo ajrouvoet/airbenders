@@ -29,15 +29,17 @@ angular.module('airbender.directives.availability', ['airbender.models'])
     return {
       templateUrl: "/views/availability.html",
       scope: {
-        availabilityData: '&',
-        floorplanData: '&'
+        availabilityData: '=',
+        floorplanData: '='
       },
       link: function($scope, $elem) {
         console.log("Availability directive loaded...");
 
-        $scope.floorplanData().then(function(floorplan) {
-          console.log("floorplan");
-          console.log(floorplan);
+        $scope.$watchCollection('floorplanData', function(f) {
+          console.log("Floorplan received in availability unit");
+          if(f) {
+            console.log(f.layout.rooms);
+          }
         });
 
         // create the svg canvas

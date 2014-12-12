@@ -22,16 +22,20 @@ angular.module('airbender.controllers', ['airbender.models'])
     });
 
     //
-    // some utility functions
+    // some utility values
     //
 
-    // transforms the floorplanData promise into
-    // one that will resolve to the data for a specific floor
-    $scope.floorplan = function(floorNo) {
-      return $scope.floorplanData.$promise.then(function(v) {
-        return _.find(v.floors, function(f) { return f.floor == floorNo; });
-      });
-    };
+    function getFloorplan(floorplanData, floorNo) {
+      return _.find(floorplanData.floors, function(f) { return f.floor == floorNo; });
+    }
+
+    $scope.floorplan = null;
+    function updateFloorplan() {
+      $scope.floorplan = getFloorplan($scope.floorplanData, $scope.floor);
+    }
+    $scope.$watchCollection('floorplanData', updateFloorplan);
+    $scope.$watch('floor', updateFloorplan);
+    $scope.$watch('floorplan', function(v) {console.log("floor: " + v)});
   }])
 
   .controller("DatePickCtrl", ["$scope", function($scope) {
