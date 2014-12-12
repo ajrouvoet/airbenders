@@ -17,37 +17,46 @@ $base0: #EEE
 $base1: #93a1a1
 $base2: #eee8d5
 $base3: #fdf6e3
+$bg: darken($base03, 3%)
+
+*
+  +box-sizing(border-box)
 
 body
-  background-color: $base03
+  background-color: $bg
   color: $base02
   font-size: 16pt
   font-weight: lighter
 
 header
-  background-color: $blue
   color: $base0
 
   h1
-    color: $base0
-
-  h2
-    color: $base0
+    color: $cyan
+    border-bottom: 1px solid $base02
 
 h1
-  color: $blue
-  font-size: 40pt
+  font-size: 25pt
+  font-weight: bold
 
 h2
-  color: $base01
-  font-size: 20pt
-  font-weight: bold
+  color: $base0
+  font-size: 25pt
+  font-weight: lighter
 
 .step
   background-color: #EEE
   min-height: 800px
 
+.step-title
+  padding-bottom: 20px
+  width: 100%
+  text-align: center
+  text-transform: uppercase
+
 #room-picker
+  padding: 20px
+    top: 40px
 
   .row
     height: 100%
@@ -56,8 +65,34 @@ h2
     border-right: 1px solid $base02
 
   #floor-picker
-    width: 100%
     text-align: center
+
+    .btn-group
+      position: relative
+      width: 100%
+      text-align: center
+
+    button
+      +border-radius(0px)
+      background: white
+      border: 1px solid $cyan
+      height: 35px
+
+      &.dropdown-toggle
+        width: 100%
+
+    .dropdown-menu
+      +border-radius(0px)
+      position: absolute
+      left: 0px
+      top: 33px
+      width: 100%
+      li
+        padding-left: 5px
+
+        &:hover
+          background-color: $bg
+          color: $base0
 
   #day-picker
     width: 100%

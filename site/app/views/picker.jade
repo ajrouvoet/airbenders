@@ -1,10 +1,24 @@
-div#room-picker.step.container
+div.step-title
+  .container
+    .row
+      h2 Meeting rooms
 
+div#room-picker.step.container
   .row
 
     .col-md-7#rooms
       div#floor-picker
-        | Fifth Floor
+        .btn-group(dropdown)
+          button.btn.dropdown-toggle(type="button" dropdown-toggle)
+            | Floor 3
+          ul.dropdown-menu(role="menu")
+            li Floor 1
+            li Floor 2
+            li.divider
+            li Floor 3
+            li.divider
+            li Floor 4
+            li Floor 5
 
     .col-md-5#availability
       div#day-picker

@@ -2,7 +2,8 @@ angular.module('airbender', [
     'd3',
     'airbender.directives',
     'airbender.models',
-    'ui.router'
+    'ui.router',
+    'ui.bootstrap'
   ])
 
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
