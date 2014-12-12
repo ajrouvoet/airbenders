@@ -12,6 +12,7 @@
     "angular-django-rest-resource": "",
     "angular-jwt": "",
     "jquery": "~2.0",
+    "jquery-ui": "",
     "json3": "~3.2.4",
     "underscore": "~1.5.0",
     "font-awesome": "4.2.0",
