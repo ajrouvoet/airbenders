@@ -5,3 +5,4 @@ django-cors-headers
 django-livefield
 PyYAML
 pytz
+python-dateutil

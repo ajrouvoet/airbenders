@@ -7,6 +7,7 @@ from core.serializers import *
 from datetime import datetime, date
 from django.db.models import Q
 import json
+from dateutil import parser
 
 class UserViewSet(viewsets.ModelViewSet):
   queryset = User.objects.all()
@@ -30,7 +31,7 @@ class AvailabilityView(APIView):
     """ Return the availability for a specific day
         for all the rooms in a building
     """
-    ondate = request.GET.get('date', date.today())
+    ondate = parser.parse(request.GET.get('date', str(date.today())))
     building = request.GET.get('building', None)
 
     roomqs = Room.objects
