@@ -18,7 +18,7 @@ angular.module('airbender.controllers', ['airbender.models'])
     function updateAvailabs() {
       return $scope.availabsData = Availabs.get({
         building: $scope.building,
-        onday: $scope.day.toISOString()
+        date: $scope.day.toISOString()
       });
     }
     updateAvailabs();

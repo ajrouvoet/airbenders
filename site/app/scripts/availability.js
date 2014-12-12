@@ -67,11 +67,6 @@ angular.module('airbender.directives.availability', ['airbender.models'])
             $scope.rooms = f.layout.rooms;
           }
         });
-
-        // function to get availability for a specific room
-        $scope.roomAvailability = function(room) { $timeout(function() {
-          return $scope.availabilityData[room.id] || [];
-        })};
       }]
     }
   }])
@@ -105,9 +100,7 @@ angular.module('airbender.directives.availability', ['airbender.models'])
         function updateAvailability(a) {
           drawAvailability(svg, slotWidth, 80, $scope.day.clone(), a);
         }
-        $scope.$watchCollection('availabilityData', function() {
-          updateAvailability;
-        });
+        $scope.$watchCollection('availabilityData', updateAvailability);
         $scope.$watch('day', updateAvailability);
       },
 
