@@ -147,6 +147,10 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      options: {
+        mangle: false,
+        compress: false
+      },
       dist: {
         files: {
           'dist/scripts/main.min.js': ['app/scripts/**/*.js']

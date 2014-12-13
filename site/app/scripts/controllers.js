@@ -11,7 +11,10 @@ angular.module('airbender.controllers', ['airbender.models'])
     // init
     $scope.floors = [1, 2, 3, 4, 5];
     $scope.floor = 3;
-    $scope.day = moment();
+    $scope.day = moment.utc();
+    $scope.from_time = moment.utc()
+      .minutes($scope.day.minutes() - ($scope.day.minutes() % 15) + 15).toDate();
+    $scope.to_time = moment($scope.from_time).add(2, 'hours').toDate();
 
     // load all availability data for this building
     $scope.availabsData = [];

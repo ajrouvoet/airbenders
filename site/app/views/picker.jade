@@ -2,7 +2,6 @@ div.step-title
   .container
     .row
       h2 Meeting rooms
-div(ng-controller="PickerCtrl")
 div#room-picker.step.container
   .row
 
@@ -20,9 +19,26 @@ div#room-picker.step.container
         button#next-day.btn-borderless(ng-click="nextDay()")
           | >
 
+      div#time-picker
+        .row
+          .col-xs-6
+            .row
+              .col-xs-4.vcenter.labels
+                span From
+              .col-xs-8.vcenter
+                div(timepicker ng-model="from_time" minute-step="15" show-meridian="false")
+          .col-xs-6
+            .row
+              .col-xs-4.vcenter.labels
+                span To
+              .col-xs-8.vcenter
+                div(timepicker ng-model="to_time" minute-step="15" show-meridian="false")
+
       div(availability
         floorplan-data="floorplan"
         rooms="rooms"
         availability-data="availabsData"
         day="day"
+        from_time="from_time"
+        to_time="to_time"
       )
