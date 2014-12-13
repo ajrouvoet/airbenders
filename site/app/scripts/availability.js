@@ -30,7 +30,7 @@ function drawSlots(svg, width, height) {
  * today :: moment
  * classes :: string
  */
-function drawIntervals(svg, slotWidth, slotHeight, today, intervals, classes) {
+function drawIntervals(svg, slotWidth, slotHeight, today, intervals, _class) {
   function toX(d) {
     var x = d * (slotWidth * 24) / (24 * 60 * 60 * 1000);
     if(x < 0)
@@ -42,11 +42,12 @@ function drawIntervals(svg, slotWidth, slotHeight, today, intervals, classes) {
     var d = dtime.diff(today.startOf('day'));
     return toX(d);
   }
-  return svg.selectAll('.interval')
+  return svg
+    .selectAll('.' + _class)
     .data(intervals)
     .enter()
     .append('rect')
-      .attr('class', classes + " interval")
+      .attr('class', _class + " interval")
       .attr('width', function(d) { return findX(d[1]) - findX(d[0]); })
       .attr('height', 40)
       .attr('x', function(d, i) { return findX(d[0]); })
