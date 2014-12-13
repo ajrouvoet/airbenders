@@ -5,7 +5,7 @@ function drawSlots(svg, width, height) {
     .data(hours)
     .enter()
     .append("rect")
-      .attr("class", "timeslot")
+      .attr("class", "time_slot")
       .attr("width", width)
       .attr("height", height)
       .attr("x", function(d, i) { return d * width;})
@@ -15,7 +15,7 @@ function drawSlots(svg, width, height) {
     .data(hours)
     .enter()
     .append("text")
-      .attr("class", "label")
+      .attr("class", "time_label")
       .attr("text-anchor", "middle")
       .attr('x', function(d, i) { return (d + 0.5) * width; })
       .attr('y', function(d, i) { return height / 4; })
@@ -42,11 +42,11 @@ function drawIntervals(svg, slotWidth, slotHeight, today, intervals, classes) {
     var d = dtime.diff(today.startOf('day'));
     return toX(d);
   }
-  return svg.selectAll('.occupied')
+  return svg.selectAll('.interval')
     .data(intervals)
     .enter()
     .append('rect')
-      .attr('class', classes)
+      .attr('class', classes + " interval")
       .attr('width', function(d) { return findX(d[1]) - findX(d[0]); })
       .attr('height', 40)
       .attr('x', function(d, i) { return findX(d[0]); })
@@ -61,12 +61,10 @@ angular.module('airbender.directives.availability', ['airbender.models'])
         availabilityData: '=',
         floorplanData: '=',
         day: '=',
-        from_time: '=',
-        to_time: '='
+        fromTime: '=',
+        toTime: '='
       },
       controller: ['$scope', function($scope) {
-        console.log('uh', $scope.from_time);
-        console.log($scope.to_time);
         $scope.rooms = [];
         $scope.$watchCollection('floorplanData', function(f) {
           if(f) {
@@ -83,10 +81,10 @@ angular.module('airbender.directives.availability', ['airbender.models'])
     return {
       scope: {
         room: "=",
-        availabScope: "=",
+        availabilityData: "=",
         day: '=',
-        from_time: '=',
-        to_time: '='
+        fromTime: '=',
+        toTime: '='
       },
 
       link: function($scope, $elem) {
@@ -108,13 +106,11 @@ angular.module('airbender.directives.availability', ['airbender.models'])
         drawSlots(svg, slotWidth, 80);
 
         // draw the chosen time interval
-        console.log($scope.from_time);
-        return;
         drawIntervals(svg,
           slotWidth,
           80,
           $scope.day.clone(),
-          [$scope.from_time, $scope.to_time],
+          [[moment($scope.fromTime), moment($scope.toTime)]],
           'preferred_slot'
         );
 
@@ -128,8 +124,8 @@ angular.module('airbender.directives.availability', ['airbender.models'])
             slotWidth,
             80,
             $scope.day.clone(),
-            _.map($scope.availabilityData[$scope.room.id] || [], function(d) {
-              return [moment(d.from_time), moment(d.to_time)];
+            _.map(_.clone($scope.availabilityData[$scope.room.id]) || [], function(d) {
+              return [moment(d.when_from), moment(d.when_to)];
             }),
             "occupied_slot"
           );
@@ -153,7 +149,6 @@ angular.module('airbender.directives.availability', ['airbender.models'])
       },
       link: function($scope) {
         $scope.selectFloor = function(f) {
-          console.log("sel" + f);
           $scope.floor = f;
         };
       }
